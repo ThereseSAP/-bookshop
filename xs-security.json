@@ -3,11 +3,50 @@
     "tenant-mode": "dedicated",
     "scopes": [
       {
+        "name": "$XSAPPNAME.Viewer",
+        "description": "Viewer"
+      },
+      {
+        "name": "$XSAPPNAME.Admin",
+        "description": "Admin"
+      },
+      {
         "name": "uaa.user",
         "description": "UAA"
       }
     ],
+    "attributes": [
+        {
+          "name": "AuthorID",
+          "description": "AuthorID",
+          "valueType": "string"
+        }
+    ],
     "role-templates": [
+        {
+            "name": "Viewer",
+            "description": "Viewer App",
+            "scope-references": [
+                "$XSAPPNAME.Viewer"
+            ],
+            "attribute-references": [
+                {
+                "name" : "AuthorID"
+                }
+            ]
+        },
+        {
+            "name": "Admin",
+            "description": "Admin App",
+            "scope-references": [
+                "$XSAPPNAME.Admin"
+            ],
+            "attribute-references": [
+                {
+                "name" : "AuthorID"
+                }
+            ]
+        },
       {
         "name": "Token_Exchange",
         "description": "UAA",

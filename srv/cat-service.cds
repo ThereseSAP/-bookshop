@@ -1,11 +1,15 @@
 using { sap.capire.bookshop as my } from '../db/schema';
 
-service CatalogService {
+service CatalogService @(requires: 'authenticated-user'){
     entity Books as projection on my.Books
     entity Authors as projection on my.Authors
 }
 
-annotate CatalogService.Books with {
+annotate CatalogService.Books with @(restrict: [
+    { grant: ['READ'], to: 'Viewer', where: 'author.ID = $user.AuthorID'},
+    { grant: ['*'], to: 'Admin'}
+    ]){
+    
     ID          @title: 'ID';
 	title       @title: 'Title';
 	descr       @title: 'Description';

@@ -8,6 +8,8 @@
   "dependencies": {
     "@sap/cds": "^5",
     "@sap/cds-odata-v2-adapter-proxy": "^1.8.11",
+    "@sap/xsenv": "^3.2.1",
+    "@sap/xssec": "^3.2.13",
     "express": "^4",
     "hdb": "^0.19.0",
     "passport": "^0.5.2"
@@ -60,8 +62,5 @@
     "hana": {
       "deploy-format": "hdbtable"
     }
-  },
-  "sapux": [
-    "app/authors"
-  ]
+  }
 }
